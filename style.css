@@ -1,0 +1,36 @@
+body{
+    background-color: #EEF9BF;
+    font-family: 'Roboto';
+    display: flex;
+    justify-content: center;
+    
+}
+
+header{
+    font-size: 700;
+    font-size: 56px;
+    color: #75B79E;
+    margin-top: 40px;
+    margin-bottom: 47px;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.main .card{
+    width: 117px;
+    height: 146px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .card .img{
+    width: 100px;
+    height: 100px;
+    
+}

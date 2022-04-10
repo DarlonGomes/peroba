@@ -7,6 +7,9 @@ let cartaDois;
 let par = 0;
 let total = 0;
 let timer = 0;
+let corpo;
+let tempo;
+let temporizador = document.querySelector(".temporizador")
 
 function comparador() { 
 	return Math.random() - 0.5; 
@@ -28,7 +31,9 @@ function quantasCartas(){
 function geradorCartas(indice){
     const repositorio = [];
     repositorio.sort(comparador);
-    const corpo = document.querySelector("main");
+     corpo = document.querySelector("main");
+     corpo.innerHTML = ""
+     
     total += indice
     for(let i = 0; i < indice / 2; i++){
         repositorio.push(matriz[i]);
@@ -48,7 +53,7 @@ function geradorCartas(indice){
         </div>
         `
     }
-    setInterval(cronometro, 1000);
+      tempo = setInterval(cronometro, 1000);
 }
 
 function retornaOrigem(cartaUm, cartaDois){
@@ -57,12 +62,14 @@ function retornaOrigem(cartaUm, cartaDois){
 }
 
 function rotacionar(elemento){
+    let podejogar;
+
     if (elemento.classList.contains("rotate")){
         return; 
     }
     
-    // Estou conseguindo selecionar mais do que duas cartas.
 
+    
     elemento.classList.add("rotate");
     contador++;
 
@@ -77,7 +84,9 @@ function rotacionar(elemento){
     if (cartaUm.innerHTML == cartaDois.innerHTML){
         par++;
     }
+
    const errado = cartaUm.innerHTML != cartaDois.innerHTML;
+
    if (errado){
        setTimeout(retornaOrigem, 1000, cartaUm, cartaDois);
    }
@@ -86,21 +95,32 @@ function rotacionar(elemento){
    cartaDois = undefined;
    venceu()
 }
+
+function cronometro(){
+    timer++
+    temporizador.innerHTML = `${timer} s`
+}
+
 function alerta(){
     alert(`Você ganhou em ${contador} jogadas e ${timer} segundos`)
+    clearInterval
+    let resposta = prompt("Você gostaria de reiniciar a partida ?")
+    clearInterval(tempo);
+    timer = 0;
+    temporizador.innerHTML = `0 s`
+    if(resposta.toLowerCase() == "sim"){
+        quantasCartas()
+    }
+    if(resposta.toLowerCase() == "não"){
+        alert("Obrigado por jogar!")
+    }
 }
 function venceu(){
     if (par !== total / 2){
         return;
     }else{
-        setTimeout(alerta, 1010);
-        
+        setTimeout(alerta, 1001);
     }
-
 }
 
-function cronometro(){
-    timer++
-    let temporizador = document.querySelector(".temporizador")
-    temporizador.innerHTML = `${timer}s`
-}
+

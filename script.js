@@ -1,6 +1,9 @@
 window.onload = quantasCartas;
 const matriz =["bobrossparrot", "explodyparrot","fiestaparrot","metalparrot","revertitparrot","tripletsparrot", "unicornparrot"]
+matriz.sort(comparador);
 let contador = 0;
+let cartaUm;
+let cartaDois;
 
 function comparador() { 
 	return Math.random() - 0.5; 
@@ -16,10 +19,7 @@ function quantasCartas(){
 }
 
 
-function rotacionar(elemento){
-    elemento.classList.add("rotate");
-    contador++;
-}
+
 
 function geradorCartas(indice){
     const repositorio = [];
@@ -43,5 +43,28 @@ function geradorCartas(indice){
         </div>
         </div>
         `
+    }
+}
+
+function rotacionar(elemento){
+    elemento.classList.add("rotate");
+    contador++;
+
+    if (cartaUm === undefined){
+        cartaUm = elemento;
+        return;
+    }
+
+    cartaDois = elemento;
+
+    if (cartaUm.innerHTML === cartaDois.innerHTML){
+        cartaUm = undefined;
+        cartaDois = undefined;
+        
+    }else{
+        cartaUm.classList.remove("rotate");
+        cartaDois.classList.remove("rotate");
+        cartaUm = undefined;
+        cartaDois = undefined
     }
 }

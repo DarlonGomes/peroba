@@ -27,44 +27,42 @@ main{
 
 }
 
-.card{
-    width: 117px;
-    height: 146px;
-    margin: 20px;
-    position: relative;
-    
-
-}
-
 main .card img{
     width: 100px;
     height: 100px;  
     object-fit: cover; 
 }
 
+.card {
+  width: 117px;
+  height: 146px;
+  margin: 20px;
+  position: relative;
+}
+
 .face {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    background-color: #A7E9AF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    backface-visibility: hidden;
-    transition: all .5s;
-    transform-style: preserve-3d;
-  }
+  width: 100%;
+  height: 100%;
+  background-color: #A7E9AF;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all .5s;
+  transform-style: preserve-3d;
+}
 
-  main .back-face {
-    transform: rotateY(180deg);
-  }
+.back-face {
+  transform: rotateY(180deg);
+}
 
-  main .card:hover .back-face {
-    transform: rotateY(0deg);
-  }
+.card.rotate .back-face {
+  transform: rotateY(0deg);
+}
 
-  main .card:hover .front-face {
-    transform: rotateY(-180deg);
-  }
+.card.rotate .front-face {
+  transform: rotateY(-180deg);
+}

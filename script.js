@@ -46,25 +46,34 @@ function geradorCartas(indice){
     }
 }
 
+function retornaOrigem(cartaUm, cartaDois){
+    cartaUm.classList.remove("rotate");
+    cartaDois.classList.remove("rotate");
+}
+
 function rotacionar(elemento){
+    if (elemento.classList.contains("rotate")){
+        return; 
+    }
+    
+    // Estou conseguindo selecionar mais do que duas cartas.
+
     elemento.classList.add("rotate");
     contador++;
 
-    if (cartaUm === undefined){
+    const primeira = cartaUm == undefined;
+    if (primeira){
         cartaUm = elemento;
         return;
     }
 
     cartaDois = elemento;
 
-    if (cartaUm.innerHTML === cartaDois.innerHTML){
-        cartaUm = undefined;
-        cartaDois = undefined;
-        
-    }else{
-        cartaUm.classList.remove("rotate");
-        cartaDois.classList.remove("rotate");
-        cartaUm = undefined;
-        cartaDois = undefined
-    }
+   const errado = cartaUm.innerHTML != cartaDois.innerHTML;
+   if (errado){
+       setTimeout(retornaOrigem, 1000, cartaUm, cartaDois);
+   }
+
+   cartaUm = undefined;
+   cartaDois = undefined;
 }

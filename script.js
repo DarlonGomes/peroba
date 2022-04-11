@@ -9,7 +9,7 @@ let total = 0;
 let timer = 0;
 let corpo;
 let tempo;
-let temporizador = document.querySelector(".temporizador")
+let temporizador = document.querySelector(".temporizador").querySelector("p");
 
 function comparador() { 
 	return Math.random() - 0.5; 
@@ -62,7 +62,7 @@ function retornaOrigem(cartaUm, cartaDois){
 }
 
 function rotacionar(elemento){
-    let podejogar;
+    
 
     if (elemento.classList.contains("rotate")){
         return; 

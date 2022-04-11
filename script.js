@@ -63,16 +63,17 @@ function retornaOrigem(cartaUm, cartaDois){
 
 function rotacionar(elemento){
     
+    
 
     if (elemento.classList.contains("rotate")){
         return; 
     }
     
-
     
+        
     elemento.classList.add("rotate");
     contador++;
-
+    
     const primeira = cartaUm == undefined;
     if (primeira){
         cartaUm = elemento;
@@ -81,15 +82,19 @@ function rotacionar(elemento){
 
     cartaDois = elemento;
 
+   
     if (cartaUm.innerHTML == cartaDois.innerHTML){
         par++;
     }
 
+    
    const errado = cartaUm.innerHTML != cartaDois.innerHTML;
 
    if (errado){
        setTimeout(retornaOrigem, 1000, cartaUm, cartaDois);
    }
+
+   
 
    cartaUm = undefined;
    cartaDois = undefined;
@@ -107,8 +112,9 @@ function alerta(){
     let resposta = prompt("Você gostaria de reiniciar a partida ?")
     clearInterval(tempo);
     timer = 0;
-    temporizador.innerHTML = `0 s`
+    
     if(resposta.toLowerCase() == "sim"){
+        temporizador.innerHTML = `0 s`
         quantasCartas()
     }
     if(resposta.toLowerCase() == "não"){

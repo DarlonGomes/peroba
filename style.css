@@ -100,8 +100,7 @@ main .card img{
   text-align: center;
   }
   .temporizador{
-    position: fixed;
-    flex;
+    position: fixed;  
   }
   main{
     flex-direction: column;

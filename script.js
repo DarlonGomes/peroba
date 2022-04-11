@@ -112,6 +112,7 @@ function alerta(){
     let resposta = prompt("Você gostaria de reiniciar a partida ?")
     clearInterval(tempo);
     timer = 0;
+    contador = 0;
     
     if(resposta.toLowerCase() == "sim"){
         temporizador.innerHTML = `0 s`
